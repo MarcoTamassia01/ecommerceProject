@@ -98,7 +98,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(birthDate, email, id, name, password, phone);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -110,15 +110,6 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(birthDate, other.birthDate) && Objects.equals(email, other.email)
-				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(password, other.password) && Objects.equals(phone, other.phone);
+		return Objects.equals(id, other.id);
 	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", birthDate="
-				+ birthDate + ", password=" + password + "]";
-	}
-
 }
