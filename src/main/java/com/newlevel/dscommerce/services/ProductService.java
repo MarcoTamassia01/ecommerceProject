@@ -1,8 +1,6 @@
 package com.newlevel.dscommerce.services;
 
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +30,21 @@ public class ProductService {
 		return result.map(x -> new ProductDTO(x));
 	}
 	
+	
+	@Transactional
+	public ProductDTO create(ProductDTO productDTO) {
+			
+		Product entity = new Product();
+		entity.setName(productDTO.getName());
+		entity.setPrice(productDTO.getPrice());
+		entity.setDescription(productDTO.getDescription());
+		entity.setImgUrl(productDTO.getImgUrl());
+		
+		entity = productRepository.save(entity);
+		
+		return new ProductDTO(entity);
+				
+	}
 	
 	
 
